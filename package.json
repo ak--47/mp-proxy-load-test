@@ -1,0 +1,21 @@
+{
+  "name": "mp-proxy-load-test",
+  "version": "1.0.0",
+  "description": "load testing ",
+  "main": "proxy-load-test.yml",
+  "scripts": {
+    "start": "artillery run --dotenv .env --output report.json proxy-load-test.yml"
+  },
+  "keywords": [
+    "mixpanel",
+    "proxy",
+    "load test"
+  ],
+  "author": "ak@mixpanel.com",
+  "license": "ISC",
+  "dependencies": {
+    "artillery": "^2.0.0-37",
+    "chance": "^1.1.11",
+    "dayjs": "^1.11.9"
+  }
+}
