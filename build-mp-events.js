@@ -47,14 +47,13 @@ function generateDataBatch(context, events, done) {
 // this builds valid event times from 5 days ago to now
 function buildTimes() {
     const now = dayjs.utc();
-    const fiveDaysAgo = now.subtract(5, "day");
-    const secondsInDay = 60 * 60 * 24; // 86400;
-    const secondsInFiveDays = secondsInDay * 5; // 432000;
+    const yesterday = now.subtract(1, "day");
+	const secondsInDay = 60 * 60 * 24;    
     const seconds = [];
-    for (let i = 0; i < secondsInFiveDays; i++) {
-        seconds.push(fiveDaysAgo.add(i, "second").unix());
-        //add some intrigue
-        if (chance.d100() > 95) seconds.push(fiveDaysAgo.add(i, "second").unix());
+    for (let i = 0; i < secondsInDay; i++) {
+        seconds.push(yesterday.add(i, "second").unix());
+        //add some intrigue to times
+        if (chance.d100() > 95) seconds.push(yesterday.add(i, "second").unix());
     }
     return seconds;
 }

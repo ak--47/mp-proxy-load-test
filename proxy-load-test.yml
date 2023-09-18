@@ -1,9 +1,9 @@
 config:
   target: '{{ $processEnvironment.PROXY_URL }}' # update your .env file with your proxy url
   phases:
-    - name: "load test proxy" # Your phase name here
+    - name: "load test proxy" 
       duration: 60 # length of test in seconds
-      arrivalRate: 6 # users per second  30 = ~1k users per min / ~100k users per hour / ~2.5M users per day
+      arrivalRate: 100 # users per second; 100 * 60 = 6000 users & ~100k events per minute 
   processor: "./build-mp-events.js"
 scenarios:
   - flow:
@@ -17,6 +17,5 @@ scenarios:
                   headers:
                     Content-Type: "application/json"
                   json: "{{ dataBatch }}"
-              - think: 1
-            count: 2 # number of times to sent events in a batch
-        count: 25 # number of times to execute the outer loop
+            count: 1 # number of times to sent events in a batch
+        count: 1 # number of times to execute the outer loop

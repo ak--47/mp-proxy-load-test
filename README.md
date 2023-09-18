@@ -1,6 +1,8 @@
 # mp-proxy-load-test
-let's make sure the proxy can scale, before we use it!
 
+load testing your [mixpanel tracking proxy](https://github.com/mixpanel/tracking-proxy)
+
+### usage: 
 ```bash
 git clone https://github.com/ak--47/mp-proxy-load-test.git
 cd mp-proxy-load-test
@@ -18,4 +20,13 @@ TOKEN=your-project-token
 ```
 
 ### WARNING:
-this will generate ~20k users and ~500k events in your mixpanel project!
+this will generate ~6k users and ~100k events in your mixpanel project!
+
+you can tune this setting in `prox-load-test.yml`:
+
+```yml
+  phases:
+    - name: "load test proxy" 
+      duration: 60 # length of test in seconds
+      arrivalRate: 100 # users per second; 100 * 60 = 6000 users & ~100k events per minute 
+```

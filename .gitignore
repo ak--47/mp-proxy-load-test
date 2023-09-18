@@ -2,3 +2,4 @@
 node_modules
 scratch.js
 report.json
+.DS_Store
